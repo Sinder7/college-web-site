@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide-Out Menu</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        /* Hidden checkbox to control menu state */
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Hamburger button */
+        .menu-button {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-button span,
+        .menu-button span::before,
+        .menu-button span::after {
+            display: block;
+            background-color: #333;
+            height: 3px;
+            width: 100%;
+            border-radius: 2px;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-button span {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .menu-button span::before {
+            content: '';
+            top: -8px;
+        }
+
+        .menu-button span::after {
+            content: '';
+            top: 8px;
+        }
+
+        /* Menu panel */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 75%;
+            max-width: 300px;
+            height: 100%;
+            background: #fafafa;
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 2rem 1rem;
+            z-index: 500;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin: 1rem 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* Toggle menu open/close */
+        #menu-toggle:checked~nav {
+            transform: translateX(0);
+        }
+
+        /* Animate hamburger to X when open */
+        #menu-toggle:checked+.menu-button span {
+            background: transparent;
+        }
+
+        #menu-toggle:checked+.menu-button span::before {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #menu-toggle:checked+.menu-button span::after {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hidden checkbox -->
+    <input type="checkbox" id="menu-toggle">
+    <!-- Hamburger label -->
+    <label for="menu-toggle" class="menu-button">
+        <span></span>
+    </label>
+
+    <!-- Slide-out navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#" class="contact-button">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content for demo -->
+    <main style="padding: 2rem;">
+        <h1>Page Content</h1>
+        <p>This is the main page. Click the button at top-right to open the menu.</p>
+    </main>
+</body>
+
+</html>
