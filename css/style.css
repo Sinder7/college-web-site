@@ -31,6 +31,9 @@ html {
     padding: 0 var(--sp-md);
 }
 
+.center {
+    text-align: center;
+}
 
 
 /* Hero-блок */
@@ -178,7 +181,7 @@ html {
     flex: 1 1 200px;
     text-align: center;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
 }
 
@@ -220,7 +223,7 @@ html {
 }
 
 .heading {
-    font-weight: 900;
+    font-weight: 750;
     font-size: var(--sp-lg);
 }
 
@@ -270,8 +273,68 @@ html {
 }
 
 
+/* specialization */
+
+.splide__slide {
+    position: relative;
+    background-color: #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    max-width: 380px;
+    min-height: 420px;
+    max-height: 500px;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.splide__slide img {
+    object-fit: cover;
+}
+
+.slide__info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.info__name {}
+
+.info__date {}
+
+.splide__arrow {
+    background: #000;
+    opacity: 0.5;
+}
+
+
+.specialization {
+    background: #F3F5F4;
+    padding: 80px 0 80px 0;
+}
+
+.splide {
+    margin-top: 35px;
+}
+
+.splide__track {}
+
+.splide__list {}
+
 
 /* Адаптив */
+
+
+@media (max-width: 1115px) {
+    .photo-stack {
+        min-width: 180px;
+        min-height: 250px;
+    }
+
+}
+
 @media (max-width: 768px) {
     .hero__title {
         font-size: 2rem;
@@ -296,11 +359,12 @@ html {
 }
 
 
-@media (max-width: 750px){
-    .hero__social{
+@media (max-width: 750px) {
+    .hero__social {
         flex-direction: column;
     }
-    .hero__field{
+
+    .hero__field {
         flex-direction: row;
         gap: 10px;
     }
