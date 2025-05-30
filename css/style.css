@@ -290,24 +290,7 @@ html {
     font-size: 24px;
 }
 
-.splide__slide img {
-    object-fit: cover;
-}
-
-.slide__info {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
-
-.info__name {}
-
-.info__date {}
-
-.splide__arrow {
-    background: #000;
-    opacity: 0.5;
-}
+.splide__arrow {}
 
 
 .specialization {
@@ -322,6 +305,59 @@ html {
 .splide__track {}
 
 .splide__list {}
+
+.card .rating {
+    position: absolute;
+    z-index: 3;
+    top: 12px;
+    right: 12px;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card .rating img {
+    width: 60px;
+    height: 60px;
+    fill: gold;
+}
+
+.card .info {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    box-sizing: border-box;
+}
+
+.card .info .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 4px;
+}
+
+.card .info .subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0 0 12px;
+}
+
+.card .info .price {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    float: right;
+}
 
 
 /* Адаптив */
