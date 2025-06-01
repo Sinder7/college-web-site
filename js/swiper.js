@@ -3,7 +3,7 @@ new Splide('#splide', {
     perPage: 3,
     perMove: 1,
     gap: '1rem',
-    pagination: false,
+    pagination: true,
     arrows: true,
     autoplay: true,
     interval: 2000,

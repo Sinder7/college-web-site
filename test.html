@@ -1,47 +1,56 @@
-<!DOCTYPE html>
-<html lang="ru">
+<?php
+/*
+Template Name: Галерея с кнопкой "Показать ещё"
+*/
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Карточка</title>
-  <style>
-    .card {
-      position: relative;
-      width: 300px;
-      border-radius: 16px;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
+get_header();
+?>
 
-    .card img {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+<section class="banner">
+    <div class="banner__inner container">
+        <h2 class="banner__title"><?php the_title(); ?></h2>
+        
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+            <div class="banner__description"><?php the_content(); ?></div>
+        <?php endwhile; endif; ?>
+        
+        <?php 
+        $images = get_field('gallery'); // Замените 'gallery' на имя вашего ACF поля
+        $total_images = count($images);
+        $visible_count = 6; // Количество изображений для показа по умолчанию
+        ?>
+        
+        <div class="banner__grid-items">
+            <?php 
+            if ($images) : 
+                $index = 0;
+                foreach ($images as $image) : 
+                    $index++;
+                    $hidden_class = ($index > $visible_count) ? 'banner__grid-item--hidden' : '';
+                    ?>
+                    <div class="banner__grid-item <?php echo $hidden_class; ?>" 
+                         style="animation-delay: <?php echo ($index * 0.1); ?>s">
+                        <img src="<?php echo esc_url($image['url']); ?>" 
+                             alt="<?php echo esc_attr($image['alt']); ?>" 
+                             class="banner__grid-image">
+                    </div>
+                <?php endforeach; 
+            endif; ?>
+        </div>
+        
+        <?php if ($total_images > $visible_count) : ?>
+            <div class="banner__controls">
+                <button class="banner__load-more">
+                    <i class="fas fa-plus-circle"></i> Показать ещё
+                </button>
+                <div class="banner__count">
+                    Показано <?php echo min($visible_count, $total_images); ?> из <?php echo $total_images; ?> изображений
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
 
-    .img_wrapper {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      background: black;
-      opacity: 0.2;
-    }
-
-    /* Блок рейтинга */
-   
-  </style>
-</head>
-
-<body>
-
-
-
-</body>
-
-</html>
+<?php
+// Добавьте JavaScript из предыдущего примера в футер
+get_footer();
