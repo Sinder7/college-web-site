@@ -8,18 +8,22 @@ get_header();
 
 <section class="banner">
     <div class="banner__inner container">
-        <h2 class="banner__title"><?php the_title(); ?></h2>
-        
+        <h2 class="banner__title">
+            <?php the_title(); ?>
+        </h2>
+
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <div class="banner__description"><?php the_content(); ?></div>
+        <div class="banner__description">
+            <?php the_content(); ?>
+        </div>
         <?php endwhile; endif; ?>
-        
+
         <?php 
         $images = get_field('gallery'); // Замените 'gallery' на имя вашего ACF поля
         $total_images = count($images);
         $visible_count = 6; // Количество изображений для показа по умолчанию
         ?>
-        
+
         <div class="banner__grid-items">
             <?php 
             if ($images) : 
@@ -28,25 +32,26 @@ get_header();
                     $index++;
                     $hidden_class = ($index > $visible_count) ? 'banner__grid-item--hidden' : '';
                     ?>
-                    <div class="banner__grid-item <?php echo $hidden_class; ?>" 
-                         style="animation-delay: <?php echo ($index * 0.1); ?>s">
-                        <img src="<?php echo esc_url($image['url']); ?>" 
-                             alt="<?php echo esc_attr($image['alt']); ?>" 
-                             class="banner__grid-image">
-                    </div>
-                <?php endforeach; 
+            <div class="banner__grid-item <?php echo $hidden_class; ?>"
+                style="animation-delay: <?php echo ($index * 0.1); ?>s">
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
+                    class="banner__grid-image">
+            </div>
+            <?php endforeach; 
             endif; ?>
         </div>
-        
+
         <?php if ($total_images > $visible_count) : ?>
-            <div class="banner__controls">
-                <button class="banner__load-more">
-                    <i class="fas fa-plus-circle"></i> Показать ещё
-                </button>
-                <div class="banner__count">
-                    Показано <?php echo min($visible_count, $total_images); ?> из <?php echo $total_images; ?> изображений
-                </div>
+        <div class="banner__controls">
+            <button class="banner__load-more">
+                <i class="fas fa-plus-circle"></i> Показать ещё
+            </button>
+            <div class="banner__count">
+                Показано
+                <?php echo min($visible_count, $total_images); ?> из
+                <?php echo $total_images; ?> изображений
             </div>
+        </div>
         <?php endif; ?>
     </div>
 </section>
@@ -54,3 +59,6 @@ get_header();
 <?php
 // Добавьте JavaScript из предыдущего примера в футер
 get_footer();
+
+
+lopesbop9084
